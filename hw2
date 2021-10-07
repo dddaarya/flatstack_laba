@@ -1,0 +1,11 @@
+require 'open-uri'
+require 'nokogiri'
+
+url = 'http://ria.ru'
+html = URI.open(url) #качаем html c удаленного сервера
+doc = Nokogiri::HTML(html) #создаем новый экземпляр Nokogiri для html
+news = doc.css('.cell-list__item-title')
+
+for i in (0..10)
+	puts news[i].text
+end
